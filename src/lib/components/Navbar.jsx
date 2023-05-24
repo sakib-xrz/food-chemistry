@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { CgClose } from "react-icons/cg";
 import { VscThreeBars } from "react-icons/vsc";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import logo from "../../assets/logo-text.png"
+import logo from "../../assets/logo-text.png";
 import Button from "./Button";
 
 const Navbar = () => {
