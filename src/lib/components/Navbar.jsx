@@ -16,13 +16,13 @@ const Navbar = () => {
         { name: "Our Shop", link: "/contact" },
     ];
     return (
-        <div className="shadow-md w-full fixed bg-black/20 top-0 z-10">
-            <div className="flex items-center justify-between py-4 md:px-14 px-7">
+        <div className="shadow-lg w-full fixed bg-black/30 top-0 z-10">
+            <div className="flex items-center justify-between py-4 lg:px-14 px-7">
                 <Link to={"/"}>
                     <img className="w-36 h-auto" src={logo} alt="" />
                 </Link>
                 <div className="flex items-center">
-                    <div className="relative mr-14 md:hidden">
+                    <div className="relative mr-14 text-white lg:hidden">
                         <small className="absolute top-[-10px] right-[-10px] bg-primary text-white rounded-full text-xs p-1 pl-[5px] w-5 h-5 flex justify-center items-center">
                             0
                         </small>
@@ -30,7 +30,7 @@ const Navbar = () => {
                     </div>
                     <div
                         onClick={() => setIsOpen(!isOpen)}
-                        className="text-3xl absolute right-8 cursor-pointer md:hidden"
+                        className="text-3xl absolute right-8 cursor-pointer lg:hidden"
                     >
                         {isOpen ? (
                             <CgClose className="text-primary" />
@@ -41,16 +41,16 @@ const Navbar = () => {
                 </div>
 
                 <ul
-                    className={`w-full text-center md:pb-0 pb-12 absolute md:static md:z-auto z-[-1] left-0 md:w-auto transition-all duration-500 ease-in ${
+                    className={`w-full text-center lg:pb-0 pb-12 absolute lg:static lg:z-auto z-[-1] left-0 lg:w-auto transition-all duration-500 ease-in ${
                         isOpen ? "top-20 " : "top-[-490px]"
                     } ${
                         isOpen &&
-                        "h-screen flex items-center justify-center mt-[-5rem]"
+                        "h-screen flex bg-black/70 items-center justify-center mt-[-5rem]"
                     }`}
                 >
-                    <div className="md:flex md:items-center space-y-7 md:space-y-0 md:space-x-5">
+                    <div className="lg:flex lg:items-center space-y-7 lg:space-y-0 lg:space-x-5">
                         {menus.map((menu, index) => (
-                            <li key={index} className="text-xl md:my-0 my-7">
+                            <li key={index} className="text-xl lg:my-0 my-7">
                                 <Link
                                     to={menu.link}
                                     onClick={() => setIsOpen(false)}
@@ -60,7 +60,7 @@ const Navbar = () => {
                                 </Link>
                             </li>
                         ))}
-                        <button className="relative hidden md:block">
+                        <button className="relative hidden lg:block">
                             <small className="absolute top-[-10px] right-[-10px] bg-primary text-white rounded-full text-xs p-1 pl-[5px] w-5 h-5 flex justify-center items-center">
                                 0
                             </small>

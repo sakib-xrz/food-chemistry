@@ -1,5 +1,5 @@
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import banner1 from "../../assets/home/01.jpg";
 import banner2 from "../../assets/home/02.jpg";
 import banner3 from "../../assets/home/03.png";
