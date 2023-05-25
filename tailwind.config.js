@@ -10,7 +10,7 @@ export default {
 
                     secondary: "#E8E8E8",
 
-                    neutral: "#151515",
+                    neutral: "#1F2937",
 
                     "base-100": "#FFFFFF",
                 },
