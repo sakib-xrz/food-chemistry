@@ -8,7 +8,7 @@ const Footer = () => {
                 <div className="text-center bg-[#1F2937] text-white flex justify-center items-center py-20">
                     <div>
                         <h2 className="font-bold text-2xl">CONTACT US</h2>
-                        <p className="mt-2 text-md">+88 123456789</p>
+                        <p className="mt-2 text-md">+880 1409029742</p>
                         <p className="mt-2 text-md">
                             Mirpur-12 Dhaka, Bangladesh
                         </p>

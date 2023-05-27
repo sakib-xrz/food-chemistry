@@ -10,7 +10,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const menus = [
         { name: "Home", link: "/home" },
-        { name: "Contact Us", link: "/about" },
+        { name: "Contact Us", link: "/contact" },
         { name: "Dashboard", link: "/products" },
         { name: "Our Menu", link: "/contact" },
         { name: "Our Shop", link: "/contact" },

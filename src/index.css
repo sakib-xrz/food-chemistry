@@ -31,10 +31,15 @@
 }
 
 /* menu item  */
-.menu-image{
+.menu-image {
     border-radius: 10px 200px 200px 200px;
 }
 
+/* about us bg img  */
+
+.bg-img {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./assets/home/featured.jpg");
+}
 
 /* responsive  */
 
