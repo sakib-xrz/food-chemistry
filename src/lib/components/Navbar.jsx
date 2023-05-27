@@ -12,8 +12,8 @@ const Navbar = () => {
         { name: "Home", link: "/home" },
         { name: "Contact Us", link: "/contact" },
         { name: "Dashboard", link: "/products" },
-        { name: "Our Menu", link: "/contact" },
-        { name: "Our Shop", link: "/contact" },
+        { name: "Our Menu", link: "/menu" },
+        { name: "Our Shop", link: "/shop" },
     ];
     return (
         <div className="shadow-lg w-full fixed bg-black/30 top-0 z-10">

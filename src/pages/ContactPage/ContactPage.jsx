@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import Contact from "../../lib/modules/contact/Contact";
 import contact from "../../assets/contact/banner.jpg";
 import phone from "../../assets/icons/phone.png";
 import location from "../../assets/icons/location.png";
@@ -9,8 +10,9 @@ import Wrapper from "../../lib/components/Wrapper";
 
 const ContactPage = () => {
     return (
-        <section>
-            <div className="">
+        <div>
+            <Contact />
+            {/* <div className="">
                 <div className="">
                     <img className="w-full h-auto" src={contact} />
                 </div>
@@ -123,8 +125,8 @@ const ContactPage = () => {
                         </div>
                     </div>
                 </div>
-            </Wrapper>
-        </section>
+            </Wrapper> */}
+        </div>
     );
 };
 

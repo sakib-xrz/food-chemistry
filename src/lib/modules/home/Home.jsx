@@ -143,6 +143,7 @@ const Home = () => {
                     </div>
                 </Wrapper>
             </div>
+            <div></div>
         </div>
     );
 };
