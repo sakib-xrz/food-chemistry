@@ -4,34 +4,46 @@ import Homepage from "../../pages/homepage/Homepage";
 import ContactPage from "../../pages/ContactPage/ContactPage";
 import MenuPage from "../../pages/MenuPage/MenuPage";
 import ShopPage from "../../pages/ShopPage/ShopPage";
+import ErrorPage from "../../pages/ErrorPage/ErrorPage";
+import RegisterPage from "../../pages/RegisterPage/RegisterPage";
+import LoginPage from "../../pages/LoginPage/LoginPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",
-                element: <Homepage />
+                element: <Homepage />,
             },
             {
                 path: "/home",
-                element: <Homepage />
+                element: <Homepage />,
             },
             {
                 path: "/contact",
-                element: <ContactPage />
+                element: <ContactPage />,
             },
             {
                 path: "/menu",
-                element: <MenuPage />
+                element: <MenuPage />,
             },
             {
                 path: "/shop",
-                element: <ShopPage />
+                element: <ShopPage />,
             },
-        ]
+            {
+                path: "/login",
+                element: <LoginPage />,
+            },
+            {
+                path: "/register",
+                element: <RegisterPage />,
+            },
+        ],
     },
 ]);
 
-export default router
+export default router;
