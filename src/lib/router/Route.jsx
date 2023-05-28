@@ -7,12 +7,12 @@ import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import Homepage from "../../pages/homepage/Homepage";
-import App from "../../App";
+import Main from "../layouts/Main";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <App />,
+        element: <Main />,
         errorElement: <ErrorPage />,
         children: [
             {
