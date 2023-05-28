@@ -6,7 +6,7 @@ import ShopPage from "../../pages/ShopPage/ShopPage";
 import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
-import Homepage from "../../pages/homepage/Homepage";
+import Homepage from "../../pages/homepage";
 import Main from "../layouts/Main";
 
 const router = createBrowserRouter([
