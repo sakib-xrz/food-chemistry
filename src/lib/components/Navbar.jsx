@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { CgClose } from "react-icons/cg";
 import { VscThreeBars } from "react-icons/vsc";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -51,13 +51,17 @@ const Navbar = () => {
                     <div className="lg:flex lg:items-center space-y-7 lg:space-y-0 lg:space-x-5">
                         {menus.map((menu, index) => (
                             <li key={index} className="text-xl lg:my-0 my-7">
-                                <Link
+                                <NavLink
                                     to={menu.link}
                                     onClick={() => setIsOpen(false)}
-                                    className="hover:text-primary uppercase text-white font-bold duration-500"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "text-primary uppercase font-bold"
+                                            : "hover:text-primary uppercase text-white font-bold duration-500"
+                                    }
                                 >
                                     {menu.name}
-                                </Link>
+                                </NavLink>
                             </li>
                         ))}
                         <button className="relative hidden lg:block">
