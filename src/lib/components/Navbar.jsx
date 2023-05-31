@@ -10,10 +10,10 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const menus = [
         { name: "Home", link: "/home" },
-        { name: "Contact Us", link: "/contact" },
-        { name: "Dashboard", link: "/products" },
         { name: "Our Menu", link: "/menu" },
         { name: "Our Shop", link: "/shop" },
+        { name: "Contact Us", link: "/contact" },
+        { name: "Dashboard", link: "/products" },
     ];
     return (
         <div className="shadow-lg w-full fixed bg-black/40 top-0 z-10">

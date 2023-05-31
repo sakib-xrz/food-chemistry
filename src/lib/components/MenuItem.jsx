@@ -21,15 +21,15 @@ const MenuItem = ({img, title, price, description}) => {
             </div>
 
             {/* for small and medium device */}
-            <div className="lg:hidden flex menu-item hover:shadow-lg cursor-pointer col-span-12 gap-4 p-3 md:col-span-6">
+            <div className="lg:hidden flex menu-item-mobile hover:shadow-lg cursor-pointer col-span-12 gap-4 p-3 md:col-span-6">
                 <img
                     className="w-[7.25rem] h-[6.5rem] object-cover menu-image"
                     src={img}
                     alt=""
                 />
                 <div>
-                    <h4 className="uppercase text-lg font-semibold">{title}</h4>
-                    <p>{description.slice(0, 45)}...</p>
+                    <h4 className="uppercase text-base">{title}</h4>
+                    <p className="text-sm">{description.slice(0, 45)}...</p>
                     <h4 className="text-primary text-lg">${price}</h4>
                 </div>
             </div>

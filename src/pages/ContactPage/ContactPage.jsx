@@ -9,6 +9,7 @@ import Title from "../../lib/components/Title";
 import Wrapper from "../../lib/components/Wrapper";
 
 const ContactPage = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     return (
         <div>
             <Contact />

@@ -8,8 +8,28 @@ import MenuItem from "../../components/MenuItem";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import MenuCard from "../../components/MenuCard";
 import featured from "../../../assets/home/featured.jpg";
+import useFetch from "../../hooks/useFetch";
+import { Link } from "react-router-dom";
 
 const Home = () => {
+    const getMenu = useFetch(
+        "http://localhost:5000/api/v1/menu/get-menus?limit=6"
+    );
+
+    const { data, loading } = getMenu;
+
+    const menuItems = data.data;
+
+    const getRecommends = useFetch(
+        "http://localhost:5000/api/v1/menu/get-menu/offered?limit=3"
+    );
+
+    const { data: recommendsItemsData, loading: isLoading } = getRecommends;
+
+    const recommendsItems = recommendsItemsData.data;
+
+    console.log(recommendsItems);
+
     return (
         <div className="space-y-14 lg:space-y-20">
             <Banner />
@@ -33,57 +53,24 @@ const Home = () => {
             <Wrapper>
                 <Title title={"FROM OUR MENU"} subtitle={"Check it out"} />
                 <div className="grid grid-cols-12">
-                    <MenuItem
-                        img={"https://i.ibb.co/5L9n7wZ/1.jpg"}
-                        title={"ROAST DUCK BREAST"}
-                        price={14.5}
-                        description={
-                            "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce"
-                        }
-                    />
-                    <MenuItem
-                        img={"https://i.ibb.co/54nSnfv/2.jpg"}
-                        title={"Tuna Niçoise"}
-                        price={12.5}
-                        description={
-                            "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce"
-                        }
-                    />
-                    <MenuItem
-                        img={"https://i.ibb.co/dfWFtxL/4.jpg"}
-                        title={"Escalope de Veau"}
-                        price={10.5}
-                        description={
-                            "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce"
-                        }
-                    />
-                    <MenuItem
-                        img={"https://i.ibb.co/mBFNRDR/7.jpg"}
-                        title={"Chicken and Walnut Salad"}
-                        price={13.5}
-                        description={
-                            "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce"
-                        }
-                    />
-                    <MenuItem
-                        img={"https://i.ibb.co/tC6c412/13.jpg"}
-                        title={"Fish Parmentier"}
-                        price={12.5}
-                        description={
-                            "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce"
-                        }
-                    />
-                    <MenuItem
-                        img={"https://i.ibb.co/CBtBDsb/1.jpg"}
-                        title={"Roasted Pork Belly"}
-                        price={12.5}
-                        description={
-                            "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce"
-                        }
-                    />
+                    {loading ? (
+                        <h1 className="text-center text-6xl">Loading....</h1>
+                    ) : (
+                        menuItems?.map((menuItem) => (
+                            <MenuItem
+                                key={menuItem?._id}
+                                img={menuItem?.image}
+                                title={menuItem?.name}
+                                price={menuItem?.price}
+                                description={menuItem?.recipe}
+                            />
+                        ))
+                    )}
                 </div>
                 <div className="flex justify-center mt-8">
-                    <ButtonPrimary>View Full Menu</ButtonPrimary>
+                    <Link to={"/menu"}>
+                        <ButtonPrimary>View Full Menu</ButtonPrimary>
+                    </Link>
                 </div>
             </Wrapper>
             <Wrapper>
@@ -96,33 +83,28 @@ const Home = () => {
             <Wrapper>
                 <Title title={"CHEF RECOMMENDS"} subtitle={"Should Try"} />
                 <div className="grid grid-cols-12 gap-auto md:gap-5 lg:gap-10">
-                    <MenuCard
-                        img={"https://i.ibb.co/dfWFtxL/4.jpg"}
-                        title={"Roast Duck Breast"}
-                        description={
-                            "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce"
-                        }
-                    />
-                    <MenuCard
-                        img={"https://i.ibb.co/5L9n7wZ/1.jpg"}
-                        title={"Tuna Niçoise"}
-                        description={
-                            "Warm goats cheese and roasted vegetable salad with black olive tapenade crostini"
-                        }
-                    />
-                    <MenuCard
-                        img={"https://i.ibb.co/CBtBDsb/1.jpg"}
-                        title={"Escalope de Veau"}
-                        description={
-                            "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette"
-                        }
-                    />
+                    {isLoading ? (
+                        <h1 className="text-center text-6xl">Loading....</h1>
+                    ) : (
+                        recommendsItems?.map((item) => (
+                            <MenuCard
+                                key={item?._id}
+                                img={item?.image}
+                                title={item?.name}
+                                description={item?.recipe}
+                            />
+                        ))
+                    )}
                 </div>
             </Wrapper>
             <div className="bg-img">
                 <Wrapper>
                     <div className="flex-col md:flex-row flex justify-center items-center gap-10 py-14 lg:py-28">
-                        <img className="md:w-6/12 h-auto rounded-sm" src={featured} alt="" />
+                        <img
+                            className="md:w-6/12 h-auto rounded-sm"
+                            src={featured}
+                            alt=""
+                        />
                         <div className="text-white md:w-6/12 space-y-2 text-center md:text-left">
                             <h5>March 20, 2023</h5>
                             <h4 className="font-bold text-lg">

@@ -35,6 +35,10 @@
     border-radius: 0px 200px 200px 200px;
 }
 
+.menu-item-mobile:hover{
+    border-radius: 0px 0px 60px 60px;
+}
+
 .menu-image {
     border-radius: 10px 200px 200px 200px;
 }
