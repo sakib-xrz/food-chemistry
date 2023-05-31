@@ -4,18 +4,20 @@ import Wrapper from "../../components/Wrapper";
 import useFetch from ".././../hooks/useFetch.js";
 import { useState } from "react";
 import MenuCard from "../../components/MenuCard";
+import Loader from "../../components/Loader";
 
 const Shop = () => {
-    const [selectedCategory, setSelectedCategory] = useState("dessert");
+    const categoryFromLocalStorage = JSON.parse(localStorage.getItem("category"));
+
+    const [selectedCategory, setSelectedCategory] = useState(categoryFromLocalStorage ?? "dessert");
 
     const getDataBySelectedCategory = useFetch(
         `http://localhost:5000/api/v1/menu/get-menu/${selectedCategory}`
     );
     const { data: categoryWiseData, loading } = getDataBySelectedCategory;
-    
+
     const categoryData = categoryWiseData?.data;
 
-    
     const getAllCategories = useFetch(
         "http://localhost:5000/api/v1/menu/get-categories"
     );
@@ -52,7 +54,7 @@ const Shop = () => {
                 </div>
 
                 {loading ? (
-                    <h1 className="text-center text-6xl">Loading....</h1>
+                    <Loader />
                 ) : (
                     <div className="grid grid-cols-12 gap-auto md:gap-5 lg:gap-10">
                         {categoryData?.map((item) => (

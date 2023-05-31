@@ -10,6 +10,7 @@ import MenuCard from "../../components/MenuCard";
 import featured from "../../../assets/home/featured.jpg";
 import useFetch from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
+import Loader from "../../components/Loader";
 
 const Home = () => {
     const getMenu = useFetch(
@@ -52,11 +53,11 @@ const Home = () => {
             </Wrapper>
             <Wrapper>
                 <Title title={"FROM OUR MENU"} subtitle={"Check it out"} />
-                <div className="grid grid-cols-12">
-                    {loading ? (
-                        <h1 className="text-center text-6xl">Loading....</h1>
-                    ) : (
-                        menuItems?.map((menuItem) => (
+                {loading ? (
+                    <Loader />
+                ) : (
+                    <div className="grid grid-cols-12">
+                        {menuItems?.map((menuItem) => (
                             <MenuItem
                                 key={menuItem?._id}
                                 img={menuItem?.image}
@@ -64,9 +65,9 @@ const Home = () => {
                                 price={menuItem?.price}
                                 description={menuItem?.recipe}
                             />
-                        ))
-                    )}
-                </div>
+                        ))}
+                    </div>
+                )}
                 <div className="flex justify-center mt-8">
                     <Link to={"/menu"}>
                         <ButtonPrimary>View Full Menu</ButtonPrimary>
@@ -82,20 +83,21 @@ const Home = () => {
             </Wrapper>
             <Wrapper>
                 <Title title={"CHEF RECOMMENDS"} subtitle={"Should Try"} />
-                <div className="grid grid-cols-12 gap-auto md:gap-5 lg:gap-10">
-                    {isLoading ? (
-                        <h1 className="text-center text-6xl">Loading....</h1>
-                    ) : (
-                        recommendsItems?.map((item) => (
+
+                {isLoading ? (
+                    <Loader />
+                ) : (
+                    <div className="grid grid-cols-12 gap-auto md:gap-5 lg:gap-10">
+                        {recommendsItems?.map((item) => (
                             <MenuCard
                                 key={item?._id}
                                 img={item?.image}
                                 title={item?.name}
                                 description={item?.recipe}
                             />
-                        ))
-                    )}
-                </div>
+                        ))}
+                    </div>
+                )}
             </Wrapper>
             <div className="bg-img">
                 <Wrapper>

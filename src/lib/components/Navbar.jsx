@@ -70,9 +70,11 @@ const Navbar = () => {
                             </small>
                             <AiOutlineShoppingCart className="text-2xl font-medium text-white" />
                         </button>
-                        <Link to={"/login"}>
-                            <Button>Log In</Button>
-                        </Link>
+                        <div>
+                            <Link to={"/login"}>
+                                <Button>Log In</Button>
+                            </Link>
+                        </div>
                     </div>
                 </ul>
             </div>
