@@ -3,8 +3,8 @@ import banner from "../../../assets/menu/banner3.jpg";
 import Wrapper from "../../components/Wrapper";
 import Title from "../../components/Title";
 import MenuCover from "../../components/MenuCover";
-import desserts from "../../../assets/menu/dessert-bg.jpeg"
-import pizza from "../../../assets/menu/pizza-bg.jpg"
+import desserts from "../../../assets/menu/dessert-bg.jpeg";
+import pizza from "../../../assets/menu/pizza-bg.jpg";
 import salad from "../../../assets/menu/salad-bg.jpg";
 import soup from "../../../assets/menu/soup-bg.jpg";
 
