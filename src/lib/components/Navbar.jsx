@@ -16,7 +16,7 @@ const Navbar = () => {
         { name: "Our Shop", link: "/shop" },
     ];
     return (
-        <div className="shadow-lg w-full fixed bg-black/30 top-0 z-10">
+        <div className="shadow-lg w-full fixed bg-black/40 top-0 z-10">
             <div className="flex items-center justify-between py-4 lg:px-14 px-7">
                 <Link to={"/"}>
                     <img className="w-36 h-auto" src={logo} alt="" />

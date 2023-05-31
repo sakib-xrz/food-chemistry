@@ -1,41 +1,31 @@
 import Wrapper from "./Wrapper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper";
+import { Autoplay } from "swiper";
 import "swiper/css";
-import "swiper/css/pagination";
-import category1 from "../../assets/home/slide1.jpg";
-import category2 from "../../assets/home/slide2.jpg";
-import category3 from "../../assets/home/slide3.jpg";
-import category4 from "../../assets/home/slide4.jpg";
-
-const categories = [
-    {
-        img: category1,
-        title: "Salads",
-    },
-    {
-        img: category2,
-        title: "Pizzas",
-    },
-    {
-        img: category3,
-        title: "Soups",
-    },
-    {
-        img: category4,
-        title: "Desserts",
-    },
-];
+import useFetch from "../hooks/useFetch";
 
 const Categories = () => {
+    const response = useFetch(
+        "http://localhost:5000/api/v1/menu/get-categories-and-images"
+    );
+
+    const { loading, data } = response;
+
+    const allCategories = data.data
+
+    const categories = allCategories?.filter(
+        (item) => item?.category !== "offered" && item?.category !== "popular"
+    );
+    
+    if (loading) {
+        <h1 className="text-center text-6xl">Loading....</h1>
+    }
+
     return (
         <Wrapper>
             <Swiper
                 slidesPerView={4}
                 spaceBetween={10}
-                pagination={{
-                    clickable: true,
-                }}
                 breakpoints={{
                     320: {
                         slidesPerView: 2,
@@ -51,20 +41,24 @@ const Categories = () => {
                     },
                 }}
                 speed={700}
-                loop={true}
                 autoplay={{
-                    delay: 3000,
+                    delay: 2000,
                     disableOnInteraction: true,
                 }}
                 navigation={true}
-                modules={[Autoplay, Navigation, Pagination]}
+                modules={[Autoplay]}
                 className="mySwiper"
             >
-                {categories.map((category, index) => (
+                {categories?.map((category, index) => (
                     <SwiperSlide key={index} className="relative">
-                        <img src={category.img} alt="" />
-                        <p className="text-2xl text-white absolute bottom-3 left-1/2 transform -translate-x-1/2">
-                            {category.title}
+                        <img
+                            className="h-44 w-full object-cover relative rounded-md"
+                            src={category?.image}
+                            alt=""
+                        />
+                        <div className="absolute duration-500 rounded-md inset-0 bg-black opacity-50 hover:cursor-pointer hover:opacity-10"></div>
+                        <p className="text-3xl font-semibold uppercase text-white absolute left-1/2 bottom-1/2 transform translate-y-1/2 -translate-x-1/2 hover:cursor-pointer">
+                            {category?.category}
                         </p>
                     </SwiperSlide>
                 ))}
