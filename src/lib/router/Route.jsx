@@ -8,6 +8,7 @@ import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import Homepage from "../../pages/homepage";
 import Main from "../layouts/Main";
+import CartPage from "../../pages/CartPage/CartPage";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
             {
                 path: "/shop",
                 element: <ShopPage />,
+            },
+            {
+                path: "/cart",
+                element: <CartPage />,
             },
             {
                 path: "/login",

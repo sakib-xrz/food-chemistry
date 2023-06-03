@@ -13,7 +13,6 @@ const Navbar = () => {
         { name: "Our Menu", link: "/menu" },
         { name: "Our Shop", link: "/shop" },
         { name: "Contact Us", link: "/contact" },
-        { name: "Dashboard", link: "/products" },
     ];
     return (
         <div className="shadow-lg w-full fixed bg-black/40 top-0 z-10">
@@ -22,12 +21,12 @@ const Navbar = () => {
                     <img className="w-36 h-auto" src={logo} alt="" />
                 </Link>
                 <div className="flex items-center">
-                    <div className="relative mr-14 text-white lg:hidden">
+                    <Link to={"/cart"} className="relative mr-14 text-white lg:hidden">
                         <small className="absolute top-[-10px] right-[-10px] bg-primary text-white rounded-full text-xs p-1 pl-[5px] w-5 h-5 flex justify-center items-center">
                             0
                         </small>
                         <AiOutlineShoppingCart className="text-2xl font-medium" />
-                    </div>
+                    </Link>
                     <div
                         onClick={() => setIsOpen(!isOpen)}
                         className="text-3xl absolute right-8 cursor-pointer lg:hidden"
@@ -64,12 +63,12 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                         ))}
-                        <button className="relative hidden lg:block">
+                        <Link to={"/cart"} className="relative hidden lg:block">
                             <small className="absolute top-[-10px] right-[-10px] bg-primary text-white rounded-full text-xs p-1 pl-[5px] w-5 h-5 flex justify-center items-center">
                                 0
                             </small>
                             <AiOutlineShoppingCart className="text-2xl font-medium text-white" />
-                        </button>
+                        </Link>
                         <div>
                             <Link to={"/login"}>
                                 <Button>Log In</Button>
