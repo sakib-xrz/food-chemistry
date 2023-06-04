@@ -25,7 +25,7 @@ const Cart = () => {
 
     return (
         <Wrapper className="pt-14 md:pt-20 space-y-14 lg:space-y-20">
-            {data.length === 0 ? (
+            {( !data || data?.length === 0) ? (
                 <div className="h-[calc(100vh-10rem)] flex justify-center items-center">
                     <div>
                         <h1 className="text-3xl md:text-5xl font-black text-center leading-10 uppercase">
@@ -44,8 +44,8 @@ const Cart = () => {
                     </div>
                 </div>
             ) : (
-                <div className="lg:flex">
-                    <div className="lg:w-8/12 w-full md:pl-10 md:pr-4 md:py-12 py-8 bg-white">
+                <div className="lg:flex lg:gap-x-4">
+                    <div className="lg:w-8/12 w-full md:py-12 py-8 bg-white">
                         <div className="flex pb-10 justify-between items-center text-neutral">
                             <p className="text-3xl md:text-5xl font-black leading-10">
                                 Food Cart
@@ -78,7 +78,7 @@ const Cart = () => {
                                         Subtotal
                                     </p>
                                     <p className="text-base leading-none text-neutral">
-                                        ${subtotal.toFixed(2)}
+                                        ${subtotal?.toFixed(2) ?? 0}
                                     </p>
                                 </div>
                                 <div className="flex items-center justify-between pt-5">
@@ -86,7 +86,7 @@ const Cart = () => {
                                         Shipping
                                     </p>
                                     <p className="text-base leading-none text-neutral">
-                                        ${shipping}
+                                        ${shipping ?? 0}
                                     </p>
                                 </div>
                                 <div className="flex items-center justify-between pt-5">
@@ -94,7 +94,7 @@ const Cart = () => {
                                         Tax
                                     </p>
                                     <p className="text-base leading-none text-neutral">
-                                        ${tax}
+                                        ${tax ?? 0}
                                     </p>
                                 </div>
                             </div>
@@ -106,7 +106,7 @@ const Cart = () => {
                                         Total
                                     </p>
                                     <p className="text-2xl font-bold leading-normal text-right text-neutral">
-                                        ${total}
+                                        ${total ?? 0}
                                     </p>
                                 </div>
 

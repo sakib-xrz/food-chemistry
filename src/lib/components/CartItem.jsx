@@ -4,7 +4,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { useState } from "react";
 
 const CartItem = ({ item, refetch }) => {
-    const { image, price, name } = item.data;
+    const { image, price, name, category } = item.data;
     const [quantity, setQuantity] = useState(item?.quantity ?? 1);
 
     const [totalPrice, setTotalPrice] = useState(quantity * price);
@@ -64,7 +64,7 @@ const CartItem = ({ item, refetch }) => {
             <div className="md:pl-3 flex justify-between">
                 <img
                     src={image}
-                    className="w-20 h-20 object-center object-cover rounded-md"
+                    className="w-20 h-20 md:w-32 md:h-32 object-center object-cover rounded-md"
                 />
                 <div className="flex gap-2 md:hidden">
                     <AiOutlineHeart className="w-6 h-6 text-red-500 cursor-pointer" />
@@ -77,13 +77,16 @@ const CartItem = ({ item, refetch }) => {
                 </div>
             </div>
             <div className="md:pl-3 md:w-3/4">
-                <div className="flex items-center justify-between w-full pt-1">
+                <div className="flex justify-between w-full pt-1">
                     <div>
                         <p className="font-semibold text-xl md:text-2xl text-neutral">
                             {name}
                         </p>
                         <p className="text-neutral font-medium">
-                            <span>Price:</span> ${price.toFixed(2)}
+                            <span>Price:</span> ${price?.toFixed(2)}
+                        </p>
+                        <p className="text-neutral font-medium capitalize">
+                            <span>Category:</span> {category}
                         </p>
                     </div>
                     <div className="md:flex gap-2 hidden">
@@ -116,7 +119,7 @@ const CartItem = ({ item, refetch }) => {
                     <div className="flex gap-2">
                         <p className="font-black text-neutral">Total:</p>
                         <p className="font-black text-neutral">
-                            ${totalPrice.toFixed(2)}
+                            ${totalPrice?.toFixed(2)}
                         </p>
                     </div>
                 </div>

@@ -64,6 +64,7 @@ const Shop = () => {
                                 img={item?.image}
                                 title={item?.name}
                                 description={item?.recipe}
+                                price={item?.price}
                             />
                         ))}
                     </div>

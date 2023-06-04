@@ -3,7 +3,7 @@ import GetCart from "../helpers/getCart";
 import setCart from "../helpers/setCart";
 import ButtonPrimary from "./ButtonPrimary";
 
-const MenuCard = ({ img, title, description, item }) => {
+const MenuCard = ({ img, title, description, price, item }) => {
     const handleAddToCart = (data) => {
         const cartItem = {
             data,
@@ -15,7 +15,7 @@ const MenuCard = ({ img, title, description, item }) => {
     const { refetch } = GetCart();
 
     return (
-        <div className="col-span-12 md:col-span-6 lg:col-span-4 shadow-md rounded-md mb-5 md:mb-0">
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 shadow-md rounded-md mb-5 md:mb-0 relative">
             <img
                 className="w-full h-[13rem] object-cover rounded-t-md"
                 src={img}
@@ -23,10 +23,11 @@ const MenuCard = ({ img, title, description, item }) => {
             />
             <div className="bg-[#F3F3F3] rounded-b-md">
                 <div className="text-center pt-7">
-                    <h3 className="text-xl font-bold hover:cursor-pointer hover:text-primary">
+                    <h3 className="text-xl font-bold">
                         {title}
                     </h3>
                     <p className="px-5 pt-2">{description.slice(0, 55)}...</p>
+                    <p className="px-3 shadow-md py-1 absolute top-5 right-0 font-bold text-primary bg-white rounded-l-md">${price}</p>
                 </div>
                 <div className="w-full flex justify-center py-7">
                     <ButtonPrimary
