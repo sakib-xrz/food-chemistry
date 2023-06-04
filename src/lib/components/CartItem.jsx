@@ -15,21 +15,27 @@ const CartItem = () => {
 
     return (
         <div className="md:flex md:gap-5 items-center py-4 border-t border-gray-200">
-            <div className="md:pl-3">
+            <div className="md:pl-3 flex justify-between">
                 <img
                     src="https://i.ibb.co/CBtBDsb/1.jpg"
                     className="w-20 h-20 object-center object-cover rounded-md"
                 />
+                <div className="flex gap-2 md:hidden">
+                    <AiOutlineHeart className="w-6 h-6 text-red-500 cursor-pointer" />
+                    <RxCross2 className="w-6 h-6 text-red-500 cursor-pointer" />
+                </div>
             </div>
             <div className="md:pl-3 md:w-3/4">
                 <div className="flex items-center justify-between w-full pt-1">
                     <div>
-                        <p className="font-semibold text-2xl text-neutral">
+                        <p className="font-semibold text-xl md:text-2xl text-neutral">
                             Strawberry Ice Cream
                         </p>
-                        <p className="text-neutral font-medium"><span>Price:</span> $6</p>
+                        <p className="text-neutral font-medium">
+                            <span>Price:</span> $6
+                        </p>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="md:flex gap-2 hidden">
                         <AiOutlineHeart className="w-6 h-6 text-red-500 cursor-pointer" />
                         <RxCross2 className="w-6 h-6 text-red-500 cursor-pointer" />
                     </div>
