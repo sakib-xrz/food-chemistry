@@ -5,9 +5,15 @@ import { VscThreeBars } from "react-icons/vsc";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import logo from "../../assets/logo-text.png";
 import Button from "./Button";
+import GetCart from "../helpers/getCart";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+
+    const { data } = GetCart();
+
+    const cartQuantity = data?.length
+
     const menus = [
         { name: "Home", link: "/home" },
         { name: "Our Menu", link: "/menu" },
@@ -21,9 +27,12 @@ const Navbar = () => {
                     <img className="w-36 h-auto" src={logo} alt="" />
                 </Link>
                 <div className="flex items-center">
-                    <Link to={"/cart"} className="relative mr-14 text-white lg:hidden">
+                    <Link
+                        to={"/cart"}
+                        className="relative mr-14 text-white lg:hidden"
+                    >
                         <small className="absolute top-[-10px] right-[-10px] bg-primary text-white rounded-full text-xs p-1 pl-[5px] w-5 h-5 flex justify-center items-center">
-                            0
+                            {cartQuantity ?? 0}
                         </small>
                         <AiOutlineShoppingCart className="text-2xl font-medium" />
                     </Link>
@@ -65,7 +74,7 @@ const Navbar = () => {
                         ))}
                         <Link to={"/cart"} className="relative hidden lg:block">
                             <small className="absolute top-[-10px] right-[-10px] bg-primary text-white rounded-full text-xs p-1 pl-[5px] w-5 h-5 flex justify-center items-center">
-                                0
+                                {cartQuantity ?? 0}
                             </small>
                             <AiOutlineShoppingCart className="text-2xl font-medium text-white" />
                         </Link>

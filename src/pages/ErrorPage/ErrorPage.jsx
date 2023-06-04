@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import error from "../../assets/404.gif";
 import ButtonPrimary from "../../lib/components/ButtonPrimary";
+import Wrapper from "../../lib/components/Wrapper";
 
 const ErrorPage = () => {
     return (
-        <div className="flex justify-center items-center">
+        <Wrapper className="h-screen flex justify-center items-center">
             <div>
                 <img src={error} alt="" />
                 <div className="text-center">
@@ -21,7 +22,7 @@ const ErrorPage = () => {
                     </Link>
                 </div>
             </div>
-        </div>
+        </Wrapper>
     );
 };
 

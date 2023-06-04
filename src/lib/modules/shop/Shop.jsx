@@ -59,6 +59,7 @@ const Shop = () => {
                     <div className="grid grid-cols-12 gap-auto md:gap-5 lg:gap-10">
                         {categoryData?.map((item) => (
                             <MenuCard
+                                item={item}
                                 key={item?._id}
                                 img={item?.image}
                                 title={item?.name}

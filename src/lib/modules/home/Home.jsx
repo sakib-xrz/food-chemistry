@@ -29,8 +29,6 @@ const Home = () => {
 
     const recommendsItems = recommendsItemsData.data;
 
-    console.log(recommendsItems);
-
     return (
         <div className="space-y-14 lg:space-y-20">
             <Banner />
@@ -90,6 +88,7 @@ const Home = () => {
                     <div className="grid grid-cols-12 gap-auto md:gap-5 lg:gap-10">
                         {recommendsItems?.map((item) => (
                             <MenuCard
+                                item={item}
                                 key={item?._id}
                                 img={item?.image}
                                 title={item?.name}
