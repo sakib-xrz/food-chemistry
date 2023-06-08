@@ -1,13 +1,17 @@
-import { FallingLines } from "react-loader-spinner";
+import { FidgetSpinner } from "react-loader-spinner";
 
 const Loader = () => {
     return (
         <div className="flex justify-center">
-            <FallingLines
-                color="#D99904"
-                width="100"
+            <FidgetSpinner
                 visible={true}
-                ariaLabel="falling-lines-loading"
+                height="80"
+                width="80"
+                ariaLabel="dna-loading"
+                wrapperStyle={{}}
+                wrapperClass="dna-wrapper"
+                ballColors={["#fff", "#fff", "#fff"]}
+                backgroundColor="#D99904"
             />
         </div>
     );

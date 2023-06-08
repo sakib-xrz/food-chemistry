@@ -9,6 +9,7 @@ import LoginPage from "../../pages/LoginPage/LoginPage";
 import Homepage from "../../pages/homepage";
 import Main from "../layouts/Main";
 import CartPage from "../../pages/CartPage/CartPage";
+import EmailVerifyPage from "../../pages/EmailVerifyPage/EmailVerifyPage";
 
 const router = createBrowserRouter([
     {
@@ -44,12 +45,16 @@ const router = createBrowserRouter([
     },
     {
         path: "/login",
-        element: <LoginPage />
+        element: <LoginPage />,
     },
     {
         path: "/register",
-        element: <RegisterPage />
-    }
+        element: <RegisterPage />,
+    },
+    {
+        path: "/auth/verify-email",
+        element: <EmailVerifyPage />,
+    },
 ]);
 
 export default router;
