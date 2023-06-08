@@ -11,10 +11,11 @@ import featured from "../../../assets/home/featured.jpg";
 import useFetch from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
 import Loader from "../../components/Loader";
+import { BASE_URL } from "../../helpers/global";
 
 const Home = () => {
     const getMenu = useFetch(
-        "http://localhost:5000/api/v1/menu/get-menus?limit=6"
+        `${BASE_URL}/menu/get-menus?limit=6`
     );
 
     const { data, loading } = getMenu;
@@ -22,7 +23,7 @@ const Home = () => {
     const menuItems = data.data;
 
     const getRecommends = useFetch(
-        "http://localhost:5000/api/v1/menu/get-menu/offered?limit=3"
+        `${BASE_URL}/menu/get-menu/offered?limit=3`
     );
 
     const { data: recommendsItemsData, loading: isLoading } = getRecommends;

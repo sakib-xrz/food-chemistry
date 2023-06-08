@@ -12,23 +12,16 @@ import Loader from "../../components/Loader";
 import MenuItem from "../../components/MenuItem";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../../helpers/global";
 
 const Menu = () => {
-    const offerDataLoad = useFetch(
-        "http://localhost:5000/api/v1/menu/get-menu/offered?limit=6"
-    );
+    const offerDataLoad = useFetch(`${BASE_URL}/menu/get-menu/offered?limit=6`);
     const dessertDataLoad = useFetch(
-        "http://localhost:5000/api/v1/menu/get-menu/dessert?limit=6"
+        `${BASE_URL}/menu/get-menu/dessert?limit=6`
     );
-    const pizzaDataLoad = useFetch(
-        "http://localhost:5000/api/v1/menu/get-menu/pizza?limit=6"
-    );
-    const saladDataLoad = useFetch(
-        "http://localhost:5000/api/v1/menu/get-menu/salad?limit=6"
-    );
-    const soupDataLoad = useFetch(
-        "http://localhost:5000/api/v1/menu/get-menu/soup?limit=6"
-    );
+    const pizzaDataLoad = useFetch(`${BASE_URL}/menu/get-menu/pizza?limit=6`);
+    const saladDataLoad = useFetch(`${BASE_URL}/menu/get-menu/salad?limit=6`);
+    const soupDataLoad = useFetch(`${BASE_URL}/menu/get-menu/soup?limit=6`);
 
     const { loading: offerLoading, data: offerData } = offerDataLoad;
     const { loading: dessertLoading, data: dessertData } = dessertDataLoad;

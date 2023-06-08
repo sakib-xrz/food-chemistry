@@ -5,22 +5,25 @@ import useFetch from ".././../hooks/useFetch.js";
 import { useState } from "react";
 import MenuCard from "../../components/MenuCard";
 import Loader from "../../components/Loader";
+import { BASE_URL } from "../../helpers/global";
 
 const Shop = () => {
-    const categoryFromLocalStorage = JSON.parse(localStorage.getItem("category"));
+    const categoryFromLocalStorage = JSON.parse(
+        localStorage.getItem("category")
+    );
 
-    const [selectedCategory, setSelectedCategory] = useState(categoryFromLocalStorage ?? "dessert");
+    const [selectedCategory, setSelectedCategory] = useState(
+        categoryFromLocalStorage ?? "dessert"
+    );
 
     const getDataBySelectedCategory = useFetch(
-        `http://localhost:5000/api/v1/menu/get-menu/${selectedCategory}`
+        `${BASE_URL}/menu/get-menu/${selectedCategory}`
     );
     const { data: categoryWiseData, loading } = getDataBySelectedCategory;
 
     const categoryData = categoryWiseData?.data;
 
-    const getAllCategories = useFetch(
-        "http://localhost:5000/api/v1/menu/get-categories"
-    );
+    const getAllCategories = useFetch(`${BASE_URL}/menu/get-categories`);
 
     const { data } = getAllCategories;
 
