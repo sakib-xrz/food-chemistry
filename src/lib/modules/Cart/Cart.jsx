@@ -25,7 +25,7 @@ const Cart = () => {
 
     return (
         <Wrapper className="pt-14 md:pt-20 space-y-14 lg:space-y-20">
-            {( !data || data?.length === 0) ? (
+            {!data || data?.length === 0 ? (
                 <div className="h-[calc(100vh-10rem)] flex justify-center items-center">
                     <div>
                         <h1 className="text-3xl md:text-5xl font-black text-center leading-10 uppercase">
@@ -36,7 +36,9 @@ const Cart = () => {
                             className="flex items-center justify-center gap-2 mt-5 lg:mt-10 cursor-pointer"
                         >
                             <Button
-                                className={"rounded-sm bg-neutral md:text-xl uppercase"}
+                                className={
+                                    "rounded-sm bg-neutral md:text-xl uppercase"
+                                }
                             >
                                 Order some food
                             </Button>
