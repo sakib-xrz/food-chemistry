@@ -82,6 +82,9 @@ const Navbar = () => {
                             <Link to={"/login"}>
                                 <Button>Log In</Button>
                             </Link>
+                            <Link to={"/email-verify"}>
+                                <Button>Log In</Button>
+                            </Link>
                         </div>
                     </div>
                 </ul>
