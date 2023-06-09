@@ -3,12 +3,75 @@ import image from "../../../assets/others/authentication2.png";
 import Button from "../../components/Button";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/icons/logo.png";
+import Spinner from "../../components/Spinner";
+import { BASE_URL } from "../../helpers/global";
+import Swal from "sweetalert2";
 
 const Register = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const [open, setOpen] = useState({
         password: false,
         confirmPassword: false,
     });
+    const [error, setError] = useState("");
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirmPassword = form.confirmPassword.value;
+        if (password !== confirmPassword) {
+            setError("Passwords doesn't match");
+            return;
+        }
+        const data = {
+            name,
+            email,
+            password,
+            confirmPassword,
+        };
+        setIsLoading(true);
+        fetch(`${BASE_URL}/user/create-user`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data);
+                setIsLoading(false);
+                if (data?.success) {
+                    // form.reset();
+                    setError("");
+                    // Swal.fire({
+                    //     icon: "success",
+                    //     title: `${data?.message}`,
+                    //     text: "Please check your email for verify your account",
+                    // });
+                    Swal.fire({
+                        icon: "success",
+                        title: `${data?.message}`,
+                        text: "Please check your email for verify your account",
+                        confirmButtonText: "OKAY",
+                        customClass: {
+                            confirmButton: "my-custom-button-class",
+                        },
+                    });
+                } else {
+                    setError(data?.message);
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                setIsLoading(false);
+            });
+    };
 
     return (
         <div className="BG-IMAGE lg:px-40 lg:py-14">
@@ -26,7 +89,33 @@ const Register = () => {
                     <h3 className="my-3 text-3xl font-bold text-center text-neutral">
                         Sign Up
                     </h3>
-                    <form className="md:w-7/12 mx-auto space-y-4 font-semibold">
+                    {error && (
+                        <div className="flex justify-center items-center gap-1">
+                            {" "}
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={3}
+                                stroke="currentColor"
+                                className="w-5 h-5 text-red-500"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M6 18L18 6M6 6l12 12"
+                                />
+                            </svg>{" "}
+                            <p className="text-md font-bold text-red-500 text-center">
+                                {error}
+                            </p>
+                        </div>
+                    )}
+
+                    <form
+                        onSubmit={handleSubmit}
+                        className="md:w-7/12 mx-auto space-y-4 font-semibold"
+                    >
                         <div>
                             <label
                                 className="block ml-2 text-sm font-medium text-neutral"
@@ -273,6 +362,7 @@ const Register = () => {
                                             ? "text"
                                             : "password"
                                     }`}
+                                    name="confirmPassword"
                                     className="block w-full py-3 text-neutral bg-white border rounded-lg px-11"
                                     placeholder="Re-enter password"
                                 />
@@ -280,13 +370,21 @@ const Register = () => {
                         </div>
                         <div className="">
                             <Button
+                                disabled={isLoading}
                                 type="submit"
-                                className={"w-full font-bold"}
+                                className={
+                                    "w-full font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+                                }
                             >
-                                Register Now
+                                {isLoading ? (
+                                    <div className="flex justify-center">
+                                        <Spinner />
+                                    </div>
+                                ) : (
+                                    "Register Now"
+                                )}
                             </Button>
                         </div>
-
                         <div className="flex items-center justify-center py-4 text-center">
                             <span className="text-sm text-neutral ">
                                 {`Already have an account?`}{" "}

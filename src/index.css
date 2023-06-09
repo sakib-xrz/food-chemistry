@@ -31,11 +31,11 @@
 }
 
 /* menu item  */
-.menu-item:hover{
+.menu-item:hover {
     border-radius: 0px 200px 200px 200px;
 }
 
-.menu-item-mobile:hover{
+.menu-item-mobile:hover {
     border-radius: 0px 0px 60px 60px;
 }
 
@@ -46,36 +46,40 @@
 /* about us bg img  */
 
 .bg-img {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./assets/home/featured.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("./assets/home/featured.jpg");
 }
 
 /* cart quantity  */
 
-
 .cart-product-quantity {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  border: 0.5px solid rgb(177, 177, 177);
-  border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    border: 0.5px solid rgb(177, 177, 177);
+    border-radius: 5px;
 }
 .cart-product-quantity button {
-  border: none;
-  outline: none;
-  background: none;
-  padding: 0.3rem 1rem;
-  cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0.3rem 1rem;
+    cursor: pointer;
 }
 .cart-product-quantity .count {
-  padding: 0.3rem 0;
+    padding: 0.3rem 0;
 }
 
-
 /* entrance bg */
-.BG-IMAGE{
+.BG-IMAGE {
     background-image: url("../src/assets/others/authentication.png");
     min-height: 100vh;
+}
+
+/* swal btn customize  */
+.my-custom-button-class {
+    background-color: #D99904 !important; 
 }
 
 /* responsive  */
