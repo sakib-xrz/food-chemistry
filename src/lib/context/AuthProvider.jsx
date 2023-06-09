@@ -47,12 +47,12 @@ export const AuthProvider = ({ children }) => {
                 `${BASE_URL}/user/login`,
                 userData
             );
-            if (response?.data && response?.data?.token) {
+            if (response?.data?.success && response?.data?.token && response.status === 201) {
                 localStorage.setItem(tokenStoragePath, response?.data?.token);
                 setCurrentUser(response?.data?.user);
-                return null;
+                return true;
             } else {
-                return "Incorrect email or password";
+                return( `${response?.data?.message}`);
             }
         } catch (e) {
             if (e?.response) {
@@ -73,12 +73,9 @@ export const AuthProvider = ({ children }) => {
 
     const getUserData = async (token) => {
         try {
-            const response = await axios.get(
-                `${BASE_URL}/user/current-user`,
-                {
-                    headers: { Authorization: `Bearer ${token}` },
-                }
-            );
+            const response = await axios.get(`${BASE_URL}/user/current-user`, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
             return response?.data?.user;
         } catch (e) {
             logout();

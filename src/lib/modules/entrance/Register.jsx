@@ -6,6 +6,7 @@ import logo from "../../../assets/icons/logo.png";
 import Spinner from "../../components/Spinner";
 import { BASE_URL } from "../../helpers/global";
 import Swal from "sweetalert2";
+import { toast } from "react-hot-toast";
 
 const Register = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -44,16 +45,10 @@ const Register = () => {
                 return res.json();
             })
             .then((data) => {
-                console.log(data);
                 setIsLoading(false);
                 if (data?.success) {
-                    // form.reset();
+                    form.reset();
                     setError("");
-                    // Swal.fire({
-                    //     icon: "success",
-                    //     title: `${data?.message}`,
-                    //     text: "Please check your email for verify your account",
-                    // });
                     Swal.fire({
                         icon: "success",
                         title: `${data?.message}`,
@@ -65,6 +60,7 @@ const Register = () => {
                     });
                 } else {
                     setError(data?.message);
+                    toast.error(data?.message);
                 }
             })
             .catch((error) => {

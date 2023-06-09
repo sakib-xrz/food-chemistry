@@ -1,13 +1,46 @@
 import { useState } from "react";
 import image from "../../../assets/others/authentication2.png";
 import Button from "../../components/Button";
-import { Link } from "react-router-dom";
-import logo from "../../../assets/icons/logo.png"
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import logo from "../../../assets/icons/logo.png";
+import { useAuth } from "../../context/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
+    const { login } = useAuth();
     const [open, setOpen] = useState({
         password: false,
     });
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
+    const [error, setError] = useState("");
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        const data = {
+            email,
+            password,
+        };
+
+        const logIn = await login(data);
+
+        if (logIn === true) {
+            form.reset();
+            setError("");
+            toast.success("Login successful");
+            navigate(from, { replace: true });
+        } else {
+            setError(logIn);
+            toast.error(logIn);
+        }
+    };
 
     return (
         <div className="BG-IMAGE lg:px-40 lg:py-40">
@@ -25,7 +58,33 @@ const Login = () => {
                     <h3 className="my-3 text-3xl font-bold text-center text-neutral">
                         Log In
                     </h3>
-                    <form className="md:w-7/12 mx-auto space-y-4 font-semibold">
+
+                    {error && (
+                        <div className="flex justify-center items-center gap-1">
+                            {" "}
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={3}
+                                stroke="currentColor"
+                                className="w-5 h-5 text-red-500"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M6 18L18 6M6 6l12 12"
+                                />
+                            </svg>{" "}
+                            <p className="text-md font-bold text-red-500 text-center">
+                                {error}
+                            </p>
+                        </div>
+                    )}
+                    <form
+                        onSubmit={handleSubmit}
+                        className="md:w-7/12 mx-auto space-y-4 font-semibold"
+                    >
                         <div>
                             <label
                                 className="block ml-2 text-sm font-medium text-neutral"
