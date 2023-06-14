@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 import { BASE_URL } from "../helpers/global";
 
 const AuthContext = createContext();
@@ -69,6 +70,7 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         setCurrentUser(null);
         localStorage.removeItem(tokenStoragePath);
+        toast.success("Logout successful")
     };
 
     const getUserData = async (token) => {

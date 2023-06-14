@@ -138,6 +138,7 @@ const Register = () => {
                                 </span>
 
                                 <input
+                                    required={true}
                                     type="text"
                                     name="name"
                                     className="block w-full py-3 text-neutral bg-white border rounded-lg px-11"
@@ -171,6 +172,7 @@ const Register = () => {
                                 </span>
 
                                 <input
+                                    required={true}
                                     type="email"
                                     name="email"
                                     className="block w-full py-3 text-neutral bg-white border rounded-lg px-11"
@@ -261,6 +263,7 @@ const Register = () => {
                                 )}
 
                                 <input
+                                    required={true}
                                     type={`${
                                         open.password ? "text" : "password"
                                     }`}
@@ -353,6 +356,7 @@ const Register = () => {
                                 )}
 
                                 <input
+                                    required={true}
                                     type={`${
                                         open.confirmPassword
                                             ? "text"

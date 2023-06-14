@@ -10,6 +10,8 @@ import Homepage from "../../pages/homepage";
 import Main from "../layouts/Main";
 import CartPage from "../../pages/CartPage/CartPage";
 import EmailVerifyPage from "../../pages/EmailVerifyPage/EmailVerifyPage";
+import PrivateRoute from "./PrivateRoute";
+import CheckoutPage from "../../pages/CheckoutPage/CheckoutPage";
 
 const router = createBrowserRouter([
     {
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
             {
                 path: "/cart",
                 element: <CartPage />,
+            },
+            {
+                path: "/checkout",
+                element: (
+                    <PrivateRoute>
+                        <CheckoutPage />
+                    </PrivateRoute>
+                ),
             },
         ],
     },

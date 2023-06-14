@@ -112,13 +112,15 @@ const Cart = () => {
                                     </p>
                                 </div>
 
-                                <Button
-                                    className={
-                                        "w-full rounded-sm bg-neutral md:text-xl"
-                                    }
-                                >
-                                    PROCEED TO CHECKOUT
-                                </Button>
+                                <Link to={"/checkout"}>
+                                    <Button
+                                        className={
+                                            "w-full rounded-sm bg-neutral md:text-xl"
+                                        }
+                                    >
+                                        PROCEED TO CHECKOUT
+                                    </Button>
+                                </Link>
                                 <Link
                                     to={"/shop"}
                                     className="flex items-center gap-2 mt-5 cursor-pointer"

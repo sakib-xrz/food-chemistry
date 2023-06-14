@@ -111,6 +111,7 @@ const Login = () => {
                                 </span>
 
                                 <input
+                                    required={true}
                                     type="email"
                                     name="email"
                                     className="block w-full py-3 text-neutral bg-white border rounded-lg px-11"
@@ -201,6 +202,7 @@ const Login = () => {
                                 )}
 
                                 <input
+                                    required={true}
                                     type={`${
                                         open.password ? "text" : "password"
                                     }`}
