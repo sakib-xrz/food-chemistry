@@ -5,17 +5,17 @@ import "swiper/css";
 import useFetch from "../hooks/useFetch";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../helpers/global";
 
 const Categories = () => {
-    const response = useFetch(
-        "http://localhost:5000/api/v1/menu/get-categories-and-images"
+    const getCategoryWithImage = useFetch(
+        `${BASE_URL}/menu/get-categories-and-images`
     );
 
-    const { loading, data } = response;
+    const { data: categoryWithImageData, loading: categoryWithImageLoading } =
+        getCategoryWithImage;
 
-    const allCategories = data.data;
-
-    const categories = allCategories?.filter(
+    const categories = categoryWithImageData?.data?.filter(
         (item) => item?.category !== "offered" && item?.category !== "popular"
     );
 
@@ -25,7 +25,7 @@ const Categories = () => {
 
     return (
         <Wrapper>
-            {loading ? (
+            {categoryWithImageLoading ? (
                 <Loader />
             ) : (
                 <Swiper

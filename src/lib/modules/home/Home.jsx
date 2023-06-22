@@ -14,21 +14,12 @@ import Loader from "../../components/Loader";
 import { BASE_URL } from "../../helpers/global";
 
 const Home = () => {
-    const getMenu = useFetch(
-        `${BASE_URL}/menu/get-menus?limit=6`
-    );
+    const getMenu = useFetch(`${BASE_URL}/menu?limit=6`);
+    const getRecommends = useFetch(`${BASE_URL}/menu/get-menu/offered?limit=3`);
 
-    const { data, loading } = getMenu;
+    const { data: menuData, loading: menuLoading } = getMenu;
 
-    const menuItems = data.data;
-
-    const getRecommends = useFetch(
-        `${BASE_URL}/menu/get-menu/offered?limit=3`
-    );
-
-    const { data: recommendsItemsData, loading: isLoading } = getRecommends;
-
-    const recommendsItems = recommendsItemsData.data;
+    const { data: recommendData, loading: recommendLoading } = getRecommends;
 
     return (
         <div className="space-y-14 lg:space-y-20">
@@ -52,11 +43,11 @@ const Home = () => {
             </Wrapper>
             <Wrapper>
                 <Title title={"FROM OUR MENU"} subtitle={"Check it out"} />
-                {loading ? (
+                {menuLoading ? (
                     <Loader />
                 ) : (
                     <div className="grid grid-cols-12">
-                        {menuItems?.map((menuItem) => (
+                        {menuData?.data?.map((menuItem) => (
                             <MenuItem
                                 key={menuItem?._id}
                                 img={menuItem?.image}
@@ -83,11 +74,11 @@ const Home = () => {
             <Wrapper>
                 <Title title={"CHEF RECOMMENDS"} subtitle={"Should Try"} />
 
-                {isLoading ? (
+                {recommendLoading ? (
                     <Loader />
                 ) : (
                     <div className="grid grid-cols-12 gap-auto md:gap-5 lg:gap-10">
-                        {recommendsItems?.map((item) => (
+                        {recommendData?.data?.map((item) => (
                             <MenuCard
                                 item={item}
                                 key={item?._id}

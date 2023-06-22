@@ -16,21 +16,20 @@ const Shop = () => {
         categoryFromLocalStorage ?? "dessert"
     );
 
-    const getDataBySelectedCategory = useFetch(
-        `${BASE_URL}/menu/get-menu/${selectedCategory}`
-    );
-    const { data: categoryWiseData, loading } = getDataBySelectedCategory;
-
-    const categoryData = categoryWiseData?.data;
-
     const getAllCategories = useFetch(`${BASE_URL}/menu/get-categories`);
 
-    const { data } = getAllCategories;
+    const getSelectedData = useFetch(
+        `${BASE_URL}/menu/get-menu/${selectedCategory}`
+    );
 
-    const allCategories = data?.data;
-    const filteredData = allCategories?.filter(
+    const { data: categoriesData, loading: categoriesLoading } =
+        getAllCategories;
+
+    const allCategory = categoriesData?.data?.filter(
         (data) => data !== "offered" && data !== "popular"
     );
+
+    const { data: categoryData, loading: categoryLoading } = getSelectedData;
 
     return (
         <div className="space-y-14 lg:space-y-20">
@@ -40,27 +39,31 @@ const Shop = () => {
                 description={"Would you like to try a dish?"}
             />
             <Wrapper>
-                <div className="flex justify-center gap-5 lg:gap-14 mb-10">
-                    {filteredData?.map((category, index) => (
-                        <p
-                            onClick={() => setSelectedCategory(category)}
-                            key={index}
-                            className={`${
-                                selectedCategory === category
-                                    ? "text-primary"
-                                    : ""
-                            }  capitalize font-bold lg:text-2xl cursor-pointer hover:text-primary`}
-                        >
-                            {category}
-                        </p>
-                    ))}
-                </div>
+                {categoriesLoading ? (
+                    <Loader />
+                ) : (
+                    <div className="flex justify-center gap-5 lg:gap-14 mb-10">
+                        {allCategory?.map((category, index) => (
+                            <p
+                                onClick={() => setSelectedCategory(category)}
+                                key={index}
+                                className={`${
+                                    selectedCategory === category
+                                        ? "text-primary"
+                                        : ""
+                                }  capitalize font-bold lg:text-2xl cursor-pointer hover:text-primary`}
+                            >
+                                {category}
+                            </p>
+                        ))}
+                    </div>
+                )}
 
-                {loading ? (
+                {categoryLoading ? (
                     <Loader />
                 ) : (
                     <div className="grid grid-cols-12 gap-auto md:gap-5 lg:gap-10">
-                        {categoryData?.map((item) => (
+                        {categoryData?.data?.map((item) => (
                             <MenuCard
                                 item={item}
                                 key={item?._id}

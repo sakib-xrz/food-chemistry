@@ -10,7 +10,7 @@ import { useAuth } from "../context/AuthProvider";
 
 const Navbar = () => {
     const { currentUser, logout } = useAuth();
-    console.log(currentUser);
+
     const [isOpen, setIsOpen] = useState(false);
 
     const { data } = GetCart();
@@ -57,11 +57,11 @@ const Navbar = () => {
                         </small>
                         <AiOutlineShoppingCart className="text-2xl font-medium" />
                     </Link>
-                    {currentUser && (
+                    {currentUser ? (
                         <div className="lg:hidden dropdown dropdown-hover dropdown-end">
                             <label
                                 tabIndex={0}
-                                className="rounded-full p-[2px] border-2 border-primary avatar ml-2 cursor-pointer"
+                                className="rounded-full p-[2px] border-2 border-primary avatar cursor-pointer"
                             >
                                 <div className="w-6 md:w-8 rounded-full">
                                     {currentUser?.photo && (
@@ -78,12 +78,19 @@ const Navbar = () => {
                                         {currentUser?.name}
                                     </p>
                                 </li>
-                                <li>
-                                    <Link>Profile</Link>
-                                </li>
-                                <li>
-                                    <Link to="/dashboard">Dashboard</Link>
-                                </li>
+                                {currentUser?.role === "admin" ? (
+                                    <li>
+                                        <Link to={"/dashboard"}>Dashboard</Link>
+                                    </li>
+                                ) : (
+                                    <li>
+                                        <Link
+                                            to={`/orders/${currentUser.phone}`}
+                                        >
+                                            My Orders
+                                        </Link>
+                                    </li>
+                                )}
                                 <li>
                                     <Link
                                         onClick={() => logout()}
@@ -93,6 +100,14 @@ const Navbar = () => {
                                     </Link>
                                 </li>
                             </ul>
+                        </div>
+                    ) : (
+                        <div className="md:hidden">
+                            <Link to={"/login"}>
+                                <Button className={"bg-primary text-white"}>
+                                    Log In
+                                </Button>
+                            </Link>
                         </div>
                     )}
                 </div>
@@ -147,16 +162,25 @@ const Navbar = () => {
                                     className="menu menu-compact dropdown-content p-2 shadow-md bg-white font-medium text-neutral rounded-md min-w-max"
                                 >
                                     <li className="cursor-default">
-                                        <p className="cursor-default hover:bg-white text-primary">
+                                        <p className="cursor-default text-primary hover:text-primary hover:bg-white">
                                             {currentUser?.name}
                                         </p>
                                     </li>
-                                    <li>
-                                        <Link>Profile</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/dashboard">Dashboard</Link>
-                                    </li>
+                                    {currentUser?.role === "admin" ? (
+                                        <li>
+                                            <Link to={"/dashboard"}>
+                                                Dashboard
+                                            </Link>
+                                        </li>
+                                    ) : (
+                                        <li>
+                                            <Link
+                                                to={`/orders/${currentUser.phone}`}
+                                            >
+                                                My Orders
+                                            </Link>
+                                        </li>
+                                    )}
                                     <li>
                                         <Link
                                             onClick={() => logout()}
@@ -170,7 +194,9 @@ const Navbar = () => {
                         ) : (
                             <div>
                                 <Link to={"/login"}>
-                                    <Button>Log In</Button>
+                                    <Button className={"bg-primary text-white"}>
+                                        Log In
+                                    </Button>
                                 </Link>
                             </div>
                         )}

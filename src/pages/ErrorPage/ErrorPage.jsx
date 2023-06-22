@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import error from "../../assets/404.gif";
 import ButtonPrimary from "../../lib/components/ButtonPrimary";
 import Wrapper from "../../lib/components/Wrapper";
+import useTitle from "../../lib/hooks/useTitle";
 
 const ErrorPage = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    useTitle("404");
     return (
         <Wrapper className="h-screen flex justify-center items-center">
             <div>

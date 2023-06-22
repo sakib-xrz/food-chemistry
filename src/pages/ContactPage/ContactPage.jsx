@@ -7,9 +7,11 @@ import location from "../../assets/icons/location.png";
 import clock from "../../assets/icons/clock.png";
 import Title from "../../lib/components/Title";
 import Wrapper from "../../lib/components/Wrapper";
+import useTitle from "../../lib/hooks/useTitle";
 
 const ContactPage = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    useTitle("Contact");
     return (
         <div>
             <Contact />

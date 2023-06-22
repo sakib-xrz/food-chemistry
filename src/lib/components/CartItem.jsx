@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { RxCross2 } from "react-icons/rx";
-import { AiOutlineHeart } from "react-icons/ai";
+// import { AiOutlineHeart } from "react-icons/ai";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 const CartItem = ({ item, refetch }) => {
     const { image, price, name, category } = item.data;
@@ -57,6 +58,7 @@ const CartItem = ({ item, refetch }) => {
         const updatedData = data.filter((item) => item.data._id !== deleteItem);
         localStorage.setItem("cart", JSON.stringify(updatedData));
         refetch();
+        toast.success("Successfully Remove");
     };
 
     return (
@@ -67,7 +69,7 @@ const CartItem = ({ item, refetch }) => {
                     className="w-20 h-20 md:w-32 md:h-32 object-center object-cover rounded-md"
                 />
                 <div className="flex gap-2 md:hidden">
-                    <AiOutlineHeart className="w-6 h-6 text-red-500 cursor-pointer" />
+                    {/* <AiOutlineHeart className="w-6 h-6 text-red-500 cursor-pointer" /> */}
                     <RxCross2
                         onClick={() => {
                             handleRemove(item), refetch();
@@ -90,7 +92,7 @@ const CartItem = ({ item, refetch }) => {
                         </p>
                     </div>
                     <div className="md:flex gap-2 hidden">
-                        <AiOutlineHeart className="w-6 h-6 text-red-500 cursor-pointer" />
+                        {/* <AiOutlineHeart className="w-6 h-6 text-red-500 cursor-pointer" /> */}
                         <RxCross2
                             onClick={() => {
                                 handleRemove(item), refetch();

@@ -15,19 +15,17 @@ import { Link } from "react-router-dom";
 import { BASE_URL } from "../../helpers/global";
 
 const Menu = () => {
-    const offerDataLoad = useFetch(`${BASE_URL}/menu/get-menu/offered?limit=6`);
-    const dessertDataLoad = useFetch(
-        `${BASE_URL}/menu/get-menu/dessert?limit=6`
-    );
-    const pizzaDataLoad = useFetch(`${BASE_URL}/menu/get-menu/pizza?limit=6`);
-    const saladDataLoad = useFetch(`${BASE_URL}/menu/get-menu/salad?limit=6`);
-    const soupDataLoad = useFetch(`${BASE_URL}/menu/get-menu/soup?limit=6`);
+    const getOffer = useFetch(`${BASE_URL}/menu/get-menu/offered?limit=6`);
+    const getDessert = useFetch(`${BASE_URL}/menu/get-menu/dessert?limit=6`);
+    const getPizza = useFetch(`${BASE_URL}/menu/get-menu/pizza?limit=6`);
+    const getSalad = useFetch(`${BASE_URL}/menu/get-menu/salad?limit=6`);
+    const getSoup = useFetch(`${BASE_URL}/menu/get-menu/soup?limit=6`);
 
-    const { loading: offerLoading, data: offerData } = offerDataLoad;
-    const { loading: dessertLoading, data: dessertData } = dessertDataLoad;
-    const { loading: pizzaLoading, data: pizzaData } = pizzaDataLoad;
-    const { loading: saladLoading, data: saladData } = saladDataLoad;
-    const { loading: soupLoading, data: soupData } = soupDataLoad;
+    const { loading: offerLoading, data: offerData } = getOffer;
+    const { loading: dessertLoading, data: dessertData } = getDessert;
+    const { loading: pizzaLoading, data: pizzaData } = getPizza;
+    const { loading: saladLoading, data: saladData } = getSalad;
+    const { loading: soupLoading, data: soupData } = getSoup;
 
     return (
         <div className="space-y-14 lg:space-y-20">
