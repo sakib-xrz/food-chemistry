@@ -12,6 +12,9 @@ import CartPage from "../../pages/CartPage/CartPage";
 import EmailVerifyPage from "../../pages/EmailVerifyPage/EmailVerifyPage";
 import PrivateRoute from "./PrivateRoute";
 import CheckoutPage from "../../pages/CheckoutPage/CheckoutPage";
+import SuccessPage from "../../pages/SuccessPage/SuccessPage";
+import FailedPage from "../../pages/FailedPage/FailedPage";
+import MyOrder from "../../pages/MyOrderPage/MyOrder";
 
 const router = createBrowserRouter([
     {
@@ -51,6 +54,10 @@ const router = createBrowserRouter([
                     </PrivateRoute>
                 ),
             },
+            {
+                path: "/orders/:email",
+                element: <MyOrder />,
+            },
         ],
     },
     {
@@ -64,6 +71,14 @@ const router = createBrowserRouter([
     {
         path: "/auth/email-verify",
         element: <EmailVerifyPage />,
+    },
+    {
+        path: "/payment/success/:tranId",
+        element: <SuccessPage />,
+    },
+    {
+        path: "/payment/fail/:tranId",
+        element: <FailedPage />,
     },
 ]);
 

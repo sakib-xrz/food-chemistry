@@ -16,7 +16,7 @@ export function useAuth() {
 // eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
     const tokenStoragePath = "accessToken";
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [currentUser, setCurrentUser] = useState(null);
     const [userFetched, setUserFetched] = useState(false);
     const [shouldRefresh, setShouldRefresh] = useState(false);

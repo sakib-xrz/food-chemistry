@@ -5,7 +5,7 @@ import { useAuth } from "../../context/AuthProvider";
 import calculateTotal from "../../helpers/calculateTotal";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import GetCart from "../../helpers/getCart";
-// import { BASE_URL } from "../../helpers/global";
+import { BASE_URL } from "../../helpers/global";
 
 const Checkout = () => {
     const { currentUser } = useAuth();
@@ -42,18 +42,18 @@ const Checkout = () => {
 
         console.log(orderData);
 
-        // fetch(`${BASE_URL}/order/create`, {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify(orderData),
-        // })
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //         console.log(data);
-        //         window.location.replace(data.url);
-        //     });
+        fetch(`${BASE_URL}/order/create`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(orderData),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                window.location.replace(data.url);
+            });
     };
 
     return (

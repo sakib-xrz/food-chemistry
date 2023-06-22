@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
-import { Navigate, useLocation } from "react-router-dom";
-import Loader from "../components/Loader";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
+import Loader from "../components/Loader";
 
 const PrivateRoute = ({ children }) => {
-    const { currentUser, isLoading } = useAuth();
-    const location = useLocation();
-    if (isLoading) {
+    const { currentUser, loading } = useAuth();
+    console.log(currentUser);
+    if (loading) {
         return <Loader />;
     }
 
-    if (currentUser) {
+    if (currentUser?.email) {
         return children;
     }
     return <Navigate to="/login" state={{ from: location }} replace />;

@@ -1,25 +1,20 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import Contact from "../../lib/modules/contact/Contact";
-import contact from "../../assets/contact/banner.jpg";
 import phone from "../../assets/icons/phone.png";
 import location from "../../assets/icons/location.png";
 import clock from "../../assets/icons/clock.png";
 import Title from "../../lib/components/Title";
 import Wrapper from "../../lib/components/Wrapper";
 import useTitle from "../../lib/hooks/useTitle";
+import Button from "../../lib/components/Button";
 
 const ContactPage = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     useTitle("Contact");
     return (
-        <div>
+        <div className="mb-10">
             <Contact />
-            {/* <div className="">
-                <div className="">
-                    <img className="w-full h-auto" src={contact} />
-                </div>
-            </div>
 
             <Wrapper>
                 <div>
@@ -116,19 +111,20 @@ const ContactPage = () => {
                                         Message
                                     </label>
                                     <textarea
-                                        className="block w-full px-5 py-2.5 mt-2 mb-20 rounded-md placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                                        className="block w-full px-5 py-2.5 mt-2 mb-10 rounded-md placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                                         placeholder="Message"
                                     ></textarea>
                                 </div>
 
-                                <button className="w-full px-6 py-3 mt-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform  rounded-lg bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 ">
+                                <Button className="w-full">
                                     Send message
-                                </button>
+                                </Button>
                             </form>
                         </div>
                     </div>
                 </div>
-            </Wrapper> */}
+            </Wrapper>
+            <div></div>
         </div>
     );
 };
